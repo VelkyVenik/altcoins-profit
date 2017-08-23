@@ -1,3 +1,4 @@
+coinbase
 redis
 restless
 tinydb

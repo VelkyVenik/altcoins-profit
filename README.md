@@ -1,0 +1,3 @@
+# Altcoin profit calculator
+
+

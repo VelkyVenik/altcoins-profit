@@ -1,0 +1,6 @@
+[CoinBase]
+# generate api key on https://www.coinbase.com/settings/api
+
+API_KEY =
+API_SECRET =
+API_VERSION =

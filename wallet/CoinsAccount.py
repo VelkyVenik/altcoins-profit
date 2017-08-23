@@ -6,9 +6,7 @@ import requests
 import arrow
 
 from .CoinBasePrice import CoinBasePrice
-
-API_URL = "https://etherchain.org/api/account/"
-
+from .Config import config
 
 @attr.s
 class CoinsAccount:
@@ -24,9 +22,12 @@ class CoinsAccount:
     fiat_price = attr.ib(default=0.0, init=False)
     fiat_price_str = attr.ib(default='', init=False)
 
+    web_url = attr.ib(default='', init=False)
+
     last_update = attr.ib(default=None, init=False)
 
     _coin_base = None
+    _config = config
 
     def _fetch_coin_base(self):
         if not self._coin_base:
@@ -39,10 +40,10 @@ class CoinsAccount:
         return True
 
     def _fetch_etherchain(self):
-        url = urljoin(API_URL, self.address)
+        api_url = urljoin(self._config.get('Ethereum', 'API_URL'), self.address)
 
         try:
-            r = requests.get(url)
+            r = requests.get(api_url)
         except requests.exceptions.RequestException as e:
             print('Unable to get ETH account', e)
             return False
@@ -54,6 +55,7 @@ class CoinsAccount:
             return False
 
         self.coin_balance = int(account_data['balance']) / 1000000000000000000
+        self.web_url = urljoin(self._config.get('Ethereum', 'WEB_URL'), self.address)
 
         return True
 

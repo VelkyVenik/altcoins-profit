@@ -15,6 +15,8 @@ coin_account_preparer = FieldsPreparer(fields={
     'fiat_price': 'fiat_price',
     'fiat_price_str': 'fiat_price_str',
 
+    'web_url': 'web_url',
+
     'last_update': 'last_update'
 })
 

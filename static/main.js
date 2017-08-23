@@ -91,7 +91,7 @@ function show_data(data) {
     $.each(data['coins_accounts'], function(value, data) {
         var row = $("<tr />")
         $("#wallets_details").append(row)
-        row.append($("<td><a target='_blank' href='https://etherchain.org/account/" + data['address'] + "'>" + data['address'] + "</td>"));
+        row.append($("<td><a target='_blank' href='" + data['web_url'] + "'>" + data['address'] + "</td>"));
         row.append($("<td>" + data['coin_balance'] + ' ' + data['coin'] + "</td>"));
         row.append($("<td>" + data['fiat_price_str'] + "</td>"));
 

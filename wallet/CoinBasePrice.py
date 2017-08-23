@@ -1,8 +1,8 @@
-import configparser
-
 import attr
 import arrow
 from coinbase.wallet.client import Client
+
+from .Config import config
 
 @attr.s
 class CoinBasePrice:
@@ -13,20 +13,15 @@ class CoinBasePrice:
     buy_price = attr.ib(init=False, default=0.0)
 
     client = None
+    config = config
 
     _last_update = attr.ib(init=False, default=None)
 
     def connect(self):
-        config = configparser.ConfigParser()
-        config.read(['config.ini', '../config.ini'])
-
-        if not config.has_section('CoinBase'):
-            return
-
         self.client = Client(
-            config['CoinBase']['API_KEY'],
-            config['CoinBase']['API_SECRET'],
-            api_version=config['CoinBase']['API_VERSION']
+            self.config.get('CoinBase', 'API_KEY'),
+            self.config.get('CoinBase', 'API_SECRET'),
+            api_version=self.config.get('CoinBase', 'API_VERSION')
         )
 
 

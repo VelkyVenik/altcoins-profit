@@ -12,7 +12,7 @@ logging.basicConfig(format="%(asctime)s %(name)-20s %(levelname)-8s %(message)s"
 logger = logging.getLogger(__name__)
 
 logger.info("Starting server")
-schedule.every(1).minutes.do(save_prices)
+schedule.every(10).minutes.do(save_prices)
 
 while True:
     schedule.run_pending()

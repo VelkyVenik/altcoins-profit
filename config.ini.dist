@@ -8,3 +8,10 @@ API_VERSION =
 [Ethereum]
 WEB_URL = https://etherchain.org/account/
 API_URL = https://etherchain.org/api/account/
+
+[InfluxDB]
+HOST =
+PORT = 8086
+USER =
+PASS =
+DATABASE =

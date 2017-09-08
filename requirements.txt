@@ -1,3 +1,5 @@
+schedule
+influxdb
 coinbase
 redis
 restless

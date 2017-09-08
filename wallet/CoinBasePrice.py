@@ -1,8 +1,9 @@
-import attr
 import arrow
+import attr
 from coinbase.wallet.client import Client
 
-from .Config import config
+from . import config
+
 
 @attr.s
 class CoinBasePrice:

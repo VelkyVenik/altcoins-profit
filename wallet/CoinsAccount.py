@@ -1,12 +1,13 @@
 from urllib.parse import urljoin
-from babel.numbers import format_currency
 
+import arrow
 import attr
 import requests
-import arrow
+from babel.numbers import format_currency
 
+from . import config
 from .CoinBasePrice import CoinBasePrice
-from .Config import config
+
 
 @attr.s
 class CoinsAccount:
